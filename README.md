@@ -10,7 +10,7 @@ The app accepts two hash parameter: start and end in a way like
 URL/#start/end
 
 The start and end can be in form of 
-- 1. "Place, CTITY" (e.g Gatech, ATL/Tech Square, ATL)
+- 1. "Place, CITY" (e.g Gatech, ATL/Tech Square, ATL)
 - 2. the start can be "your location", in this case, it will use the location data to get your current position.
 - 3. the end can be a preset of the following positions:
  
