@@ -1,25 +1,20 @@
-Steepless
+Mobile Map App
 =========
 
-Steepless is an app to find the flattest routes and avoid the hilliest routes.
 
-Story
+
+Use the App
 -----
 
-I visited and stayed in San Francisco for 4 months, and the very first thing I realised that I need is a tool to navigate around the steep hills there. I wanted to build an app for that. I came back to Singapore and finally find the time to build it. And I call it Steepless.
+The app accepts two hash parameter: start and end in a way like
+URL/#start/end
 
-This app also gives me a chance to try out the [React](http://facebook.github.io/react/) library, which I find very interesting.
-
-While building Steepless, I've done a bunch of research and found there are similar attempts by other developers:
-
-- [Bikesy](http://bikesy.com/)
-- [Hill Mapper](http://hillmapper.com/)
-- [The Steeps Of San Francisco](http://www.datapointed.net/2009/11/the-steeps-of-san-francisco/) and its [sequel](http://www.datapointed.net/2010/02/more-steeps-of-san-francisco/)
-- [Flattest Route](http://www.flattestroute.com/)
-- [Hillmap](http://www.hillmap.com/)
-
-Steepless is yet another attempt.
-
+The start and end can be in form of 
+- 1. "Place, CTITY" (e.g Gatech, ATL/Tech Square, ATL)
+- 2. the start can be "your location", in this case, it will use the location data to get your current position.
+- 3. the end can be a preset of the following positions:
+ 
+-- EBCHS, SAWK, F15, CBF ...
 Design
 ------
 
