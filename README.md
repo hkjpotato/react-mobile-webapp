@@ -1,7 +1,7 @@
 Mobile Map App
 =========
 
-
+__[Live Demo]__
 
 Use the App
 -----
@@ -36,3 +36,4 @@ License
 -------
 
 [MIT](http://cheeaun.mit-license.org/)
+[Live Demo]: <http://52.24.114.125:kjweb/webmap/#walking/your location/tech square, atl>
