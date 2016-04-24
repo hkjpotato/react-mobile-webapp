@@ -9,13 +9,13 @@ gulp.task('webserver', function(){
 });
 
 gulp.task('watch', function(){
-	watch('assets/steepless.jsx')
+	watch('assets/mapapp.jsx')
 		.pipe(react())
 		.pipe(gulp.dest('assets'));
 });
 
 gulp.task('react', function(){
-	gulp.src('assets/steepless.jsx')
+	gulp.src('assets/mapapp.jsx')
 		.pipe(react())
 		.pipe(gulp.dest('assets'));
 });

@@ -77,7 +77,7 @@ var mapApp = {
 	}
 };
 
-var App = React.createClass({
+var App = React.createClass({displayName: "App",
 	getInitialState: function(){
 		return {
 			start: '',
@@ -116,10 +116,10 @@ var App = React.createClass({
 		var travelMode = decodeURIComponent(locations[0]);
 		// var travelMode = locations[0];
 
-		var origin = decodeURIComponent(locations[1]);
+		var origin = decodeURIComponent(locations[1]).toUpperCase();
 		// var origin = locations[1];
 
-		var destination = decodeURIComponent(locations[2]);
+		var destination = decodeURIComponent(locations[2]).toUpperCase();
 		
 
 		// check if use default destination
@@ -134,7 +134,7 @@ var App = React.createClass({
 		}
 
 		// check if use current position
-		if (origin == "your location") {
+		if (origin == "YOUR LOCATION") {
 			console.log("Use HTML5 to get the location of the users");
 			var that = this;
 			mapApp.getLocation(function(position) {
@@ -151,7 +151,7 @@ var App = React.createClass({
 				mapApp.yourLocation = null;
 				that.setState({
 					travelMode: travelMode,
-					start: "Gatech, ATL",
+					start: "GATECH, ATL",
 					end: destination
 				});
 				that.getRoutes();
@@ -223,28 +223,28 @@ var App = React.createClass({
 		};
 		var travelMode = this.state.travelMode;
 		return (
-			<div id="rootApp">
-				<header>
-					<h1><Icon type="pedestrian" width="50" height="50"></Icon>Find My Way</h1>
-				</header>
-				<Map />
-				<RouteForm start={this.state.start} end={this.state.end} units={units} travelMode={travelMode} onUnitChange={this.handleUnitChange} onTravelModeChange={this.handleTravelModeChange} />
-			</div>
+			React.createElement("div", {id: "rootApp"}, 
+				React.createElement("header", null, 
+					React.createElement("h1", null, React.createElement(Icon, {type: "pedestrian", width: "36", height: "36"}), "Find My Way")
+				), 
+				React.createElement(Map, null), 
+				React.createElement(RouteForm, {start: this.state.start, end: this.state.end, units: units, travelMode: travelMode, onUnitChange: this.handleUnitChange, onTravelModeChange: this.handleTravelModeChange})
+			)
 		);
 	}
 });
 
-var Icon = React.createClass({
+var Icon = React.createClass({displayName: "Icon",
 	render: function(){
 		var type = this.props.type;
 		var title = this.props.title;
 		return (
-			<svg title={title} className="icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="assets/icons.svg#icon-' + type + '"></use>'}} width={this.props.width} height={this.props.height}></svg>
+			React.createElement("svg", {title: title, className: "icon", dangerouslySetInnerHTML: {__html: '<use xlink:href="assets/icons.svg#icon-' + type + '"></use>'}, width: this.props.width, height: this.props.height})
 		);
 	}
 });
 
-var Map = React.createClass({
+var Map = React.createClass({displayName: "Map",
 	getDefaultProps: function(){
 		return {
 			map: {
@@ -278,13 +278,13 @@ var Map = React.createClass({
 	},
 	render: function(){
 		return (
-			<div id="map-canvas"></div>
+			React.createElement("div", {id: "map-canvas"})
 		);
 	}
 });
 
 
-var RouteForm = React.createClass({
+var RouteForm = React.createClass({displayName: "RouteForm",
 	updateLocationHash: function(travelMode, start, end){
 		console.log("---------rout form update location hash-----------");
 		console.log("route form submit, and get the parameters from input props, then update the location with the encoded parameters");
@@ -295,8 +295,8 @@ var RouteForm = React.createClass({
 		var encodedStart = encodeURIComponent(start),
 			encodedEnd = encodeURIComponent(end);
 		console.log("encoded", encodedStart, encodedEnd);
-		location.hash = travelMode + '/' + start + '/' + end;
-		// location.hash = travelMode + '/' + encodedStart + '/' + encodedEnd;
+		// location.hash = travelMode + '/' + start + '/' + end;
+		location.hash = travelMode + '/' + encodedStart + '/' + encodedEnd;
 	},
 	handleSubmit: function(){
 		var travelMode = this.refs.travelMode.getDOMNode().value;
@@ -346,33 +346,33 @@ var RouteForm = React.createClass({
 	render: function(){
 		var units = this.props.units;
 		return (
-			<form id="directions-form" onSubmit={this.handleSubmit}>
-				<div className="travel-option">
-						<select ref="travelMode" onChange={this.handleTravelModeChange}>
-							<option value="walking">Walking</option>
-							<option value="driving">Driving</option>
-							<option value="bicycling">Bicycling</option>
-						</select>
-				</div>
-				<div className="address">
-				<div className="field-section">
-					<input ref="start" id="directions-start" placeholder="Start" required />
-				</div>
-				<a href="#" id="flip-direction" onClick={this.handleFlip} title="Flip origin and destination" tabIndex="-1"><Icon type="arrow-right" width="60" height="60"></Icon></a>
-				<div className="field-section">
-					<input ref="end" id="directions-end" placeholder="Destination" required />
-				</div>
-				</div>
-				<div className="form-footer">
-					<button>Go</button>
-				</div>
-			</form>
+			React.createElement("form", {id: "directions-form", onSubmit: this.handleSubmit}, 
+				React.createElement("div", {className: "travel-option"}, 
+						React.createElement("select", {ref: "travelMode", onChange: this.handleTravelModeChange}, 
+							React.createElement("option", {value: "walking"}, "Walking"), 
+							React.createElement("option", {value: "driving"}, "Driving"), 
+							React.createElement("option", {value: "bicycling"}, "Bicycling")
+						)
+				), 
+				React.createElement("div", {className: "address"}, 
+				React.createElement("div", {className: "field-section"}, 
+					React.createElement("input", {ref: "start", id: "directions-start", placeholder: "Start", required: true})
+				), 
+				React.createElement("a", {href: "#", id: "flip-direction", onClick: this.handleFlip, title: "Flip origin and destination", tabIndex: "-1"}, React.createElement(Icon, {type: "arrow-right", width: "20", height: "20"})), 
+				React.createElement("div", {className: "field-section"}, 
+					React.createElement("input", {ref: "end", id: "directions-end", placeholder: "Destination", required: true})
+				)
+				), 
+				React.createElement("div", {className: "form-footer"}, 
+					React.createElement("button", null, "Go")
+				)
+			)
 		);
 	}
 });
 
 
 React.renderComponent(
-	<App />,
+	React.createElement(App, null),
 	document.getElementById('app')
 );
