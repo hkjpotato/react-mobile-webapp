@@ -6,8 +6,10 @@ Mobile Map App
 Use the App
 -----
 
-The app accepts two hash parameter: start and end in a way like
-URL/#start/end
+The app accepts three hash parameter: travel mode, start and end
+URL/#travelmode/start/end
+
+Travel Mode can be walking/driving/bicycling
 
 The start and end can be in form of 
 - 1. "Place, CITY" (e.g Gatech, ATL/Tech Square, ATL)
