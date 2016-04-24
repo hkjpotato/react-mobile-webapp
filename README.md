@@ -32,8 +32,5 @@ Requires [Node.js](http://nodejs.org/) and [gulp.js](http://gulpjs.com/).
 - `npm install` to install the dependencies.
 - `gulp` to start the server at `localhost:8000`.
 
-License
--------
 
-[MIT](http://cheeaun.mit-license.org/)
-[Live Demo]: <http://52.24.114.125:kjweb/webmap/#walking/your location/tech square, atl>
+   [Live Demo]: <http://52.24.114.125:kjweb/webmap/#walking/your location/tech square, atl>
