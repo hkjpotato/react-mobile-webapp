@@ -32,5 +32,4 @@ Requires [Node.js](http://nodejs.org/) and [gulp.js](http://gulpjs.com/).
 - `npm install` to install the dependencies.
 - `gulp` to start the server at `localhost:8000`.
 
-   [Live Demo]: <http://52.24.114.125:3000/>
-   [Live Demo]: <http://kjhuang.com/webmap/#walking/your location/tech square, atl/>
+   [Live Demo]: <http://kjhuang.com/webmap/#walking/YOUR%20LOCATION/TECH%20SQUARE%2C%20ATL/>
